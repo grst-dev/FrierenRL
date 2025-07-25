@@ -1,0 +1,48 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "standard": {
+            "format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+        }
+    },
+
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "standard",
+            "level": "INFO",
+            "stream": "ext://sys.stdout"
+        },
+        "fileHandler": {
+            "class": "logging.FileHandler",
+            "formatter": "standard",
+            "level": "INFO",
+            "filename": "log/agent_simulator_log.txt",
+            "encoding": "utf8"
+        }
+    },
+
+    "loggers": {
+        "__main__": {
+            "level": "DEBUG",
+            "handlers": ["console", "fileHandler"],
+            "propagate": false
+        },
+        "same_hierarchy": {
+            "level": "DEBUG",
+            "handlers": ["console", "fileHandler"],
+            "propagate": false
+        },
+        "lower.sub": {
+            "level": "DEBUG",
+            "handlers": ["console", "fileHandler"],
+            "propagate": false
+        }
+    },
+
+    "root": {
+        "handlers": ["console", "fileHandler"],
+        "level": "INFO"
+    }
+}
